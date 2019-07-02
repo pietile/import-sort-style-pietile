@@ -1,6 +1,35 @@
 # import-sort-style-pietile
 
-Simple and meaningful imports order
+Simple and meaningful imports order style for [import-sort](https://github.com/renke/import-sort).
+Works great with JavaScript and TypeScript.
+
+## Usage
+
+1. Install packages:
+
+   - import-sort: `yarn add --dev import-sort`
+   - parser either _JavaScript_ or \_TypeScript:
+     `yarn add --dev import-sort-parser-babylon` or `yarn add --dev import-sort-parser-typescript`
+   - this style: `yarn add --dev import-sort-style-pietile`
+
+2. Setup config:
+
+   ```json
+   {
+     ".js, .jsx": {
+       "parser": "babylon",
+       "style": "pietile"
+     },
+     ".ts, .tsx": {
+       "parser": "typescript",
+       "style": "pietile"
+     }
+   }
+   ```
+
+3. Sort imports either from [CLI](https://github.com/renke/import-sort/tree/master/packages/import-sort-cli) or with Editor plugin ([VSCode](https://github.com/amatiasq/vsc-sort-imports) for example)
+
+## Result
 
 ```js
 // Modules without members. Don't sort them as the order can be important.
