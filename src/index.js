@@ -1,5 +1,7 @@
 function isResourceModule(imported) {
-  return imported.moduleName.endsWith('.png');
+  const name = imported.moduleName;
+
+  return name.endsWith('.png') || name.endsWith('.jpg') || name.endsWith('.svg');
 }
 
 function isReactModule(imported) {
