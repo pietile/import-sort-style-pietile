@@ -12,9 +12,9 @@
   "author": "Vladislav Shabanov <vshabanov88@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "~6.0.0",
-    "eslint-config-airbnb-base": "~13.2.0",
-    "eslint-config-prettier": "~6.0.0",
+    "eslint": "~6.2.0",
+    "eslint-config-airbnb-base": "~14.0.0",
+    "eslint-config-prettier": "~6.1.0",
     "eslint-plugin-import": "^2.7.0",
     "prettier": "~1.18.0"
   },
