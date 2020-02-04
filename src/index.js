@@ -4,6 +4,12 @@ function isResourceModule(imported) {
   return name.endsWith('.png') || name.endsWith('.jpg') || name.endsWith('.svg');
 }
 
+function isCSSModule(imported) {
+  const name = imported.moduleName;
+
+  return name.endsWith('.css');
+}
+
 function isReactModule(imported) {
   return imported.moduleName === 'react';
 }
@@ -74,7 +80,7 @@ function style(api, file) {
 
     // import … from "../foo";
     {
-      match: and(isExternalModule, not(isResourceModule)),
+      match: and(isExternalModule, not(isResourceModule), not(isCSSModule)),
       sort: [dotSegmentCount, moduleName(naturally)],
       sortNamedMembers: alias(unicode),
     },
@@ -82,13 +88,23 @@ function style(api, file) {
 
     // import … from "./foo";
     {
-      match: and(isInternalModule, not(isResourceModule)),
+      match: and(isInternalModule, not(isResourceModule), not(isCSSModule)),
       sort: [dotSegmentCount, moduleName(naturally)],
       sortNamedMembers: alias(unicode),
     },
     { separator: true },
 
-    // 5. Resources
+    // 5. CSS modules
+
+    // import icon from "./foo.module.css";
+    {
+      match: isCSSModule,
+      sort: [dotSegmentCount, moduleName(naturally)],
+      sortNamedMembers: alias(unicode),
+    },
+    { separator: true },
+
+    // 6. Resources
 
     // import icon from "./icon.png";
     {
